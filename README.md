@@ -12,3 +12,19 @@ In future, utilizing and manually labelling a set of randomly selected tweets in
 ** This project has been a fun way of learning Python, database connection with python, natural language processing, deep learning, JavaScript and Google cloud platform. Anyone interested in collaborating and learning along the way is most welcomed. For any queries or collaborations please contact Dr. Rohit Farmer at rohit [dot] farmer [at] gmail [dot] com.
 
 ## Scripts Used
+
+**tweet_capture.py:** Captures streaming tweets via Twitter OAuth authentication.  
+*Usage:* nohup python3 tweet_capture.py &  *# to keep it running at the background*
+
+**bioinfotwee.db:** An SQLite3 database to store captured tweets by tweet_capture.py script.  
+*Database schema:*
+'''sqlite
+sqlite> .schema
+CREATE TABLE "tweetscapture" (
+    "Date" TEXT NOT NULL,
+    "ScreenName" TEXT NOT NULL,
+    "UserID" TEXT NOT NULL,
+    "TweetID" TEXT NOT NULL,
+    "Text" TEXT NOT NULL
+)
+'''

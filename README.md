@@ -18,7 +18,7 @@ In future, utilizing and manually labelling a set of randomly selected tweets in
 
 **bioinfotwee.db:** An SQLite3 database to store captured tweets by tweet_capture.py script.  
 *Database schema:*  
-'''
+```sqlite
 sqlite> .schema
 CREATE TABLE "tweetscapture" (
     "Date" TEXT NOT NULL,
@@ -27,4 +27,4 @@ CREATE TABLE "tweetscapture" (
     "TweetID" TEXT NOT NULL,
     "Text" TEXT NOT NULL
 )
-'''
+```

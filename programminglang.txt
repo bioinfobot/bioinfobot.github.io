@@ -1,0 +1,153 @@
+AngularJS
+AnyChart
+Aurelia
+Backbone.js
+Bioconductor
+BioJava
+BioPerl
+BioPython
+BioRuby
+Bootstrap
+Bionode
+C
+C#
+C++
+Cappuccino
+Cascade Framework
+Chaplin.js
+CoffeeScript
+ColdFusion
+csh
+CUDA
+Curl
+Cython
+D3.js
+DevExtreme
+DHTMLX
+Dojo
+EaselJS
+Echo
+ECMAScript
+Emacs Lisp
+Ember.js
+Enyo
+Erlang
+Ext
+Ext JS
+Fortran
+Gijgo
+Glow
+Golang
+Google Apps Script
+Google Closure Library
+Google Web Toolkit
+Google's Polymer paper elements
+Groovy
+Hack
+Haskell
+Highcharts
+Ignite
+Jasmine
+Java
+JavaScript
+JavaScriptMVC
+Jinja-JS
+Joose
+jQuery
+jQWidgets
+JsPHP
+Kendo
+Knockout
+ksh
+Latex
+Lisp
+Lynx
+Maple
+Mathematica
+MATLAB
+Mesa
+Meteor
+Microsoft's Ajax library
+midori
+Mocha
+MochiKit
+Mojito
+MooTools
+Mustache
+node
+Node.js
+Objective-C
+Octave
+OpenUI5
+p5.js
+Pascal
+PDF.js
+Perl
+Perl 6
+PHP
+Pixi.js
+PL/SQL
+Plotly
+PostScript
+Processing.js
+Prototype JavaScript Framework
+Python
+qooxdoo
+QPL
+QUnit
+R
+Raphaël
+React
+Rialto Toolkit
+Rico
+Ruby
+Rust
+SAS
+SBL
+SBML
+Scala
+Scheme
+Scilab
+Script.aculo.us
+Sed
+SIMSCRIPT
+Simula
+Simulink
+Smalltalk
+SmartClient
+Socket.IO
+SproutCore
+Spry framework
+SPS
+SQL
+SWFObject
+Swift
+Tcl
+TeX
+Three.js
+Twig.js
+Underscore.js
+Unit.js
+Velocity.js
+Visual Basic
+Visual Basic .NET
+Visual DataFlex
+Visual DialogScript
+Visual Fortran
+Visual FoxPro
+Visual J#
+Visual J++
+Visual Objects
+Visual Prolog
+Vue.js
+W2UI
+Wakanda Framework
+Webix
+WhitestormJS
+Wijmo
+Winbatch
+Windows PowerShell
+WinJS
+YUI Library
+Zsh
+ZURB

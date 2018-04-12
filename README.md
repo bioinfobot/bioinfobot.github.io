@@ -16,7 +16,7 @@ In future, utilizing and manually labelling a set of randomly selected tweets in
 **tweet_capture.py:** Captures streaming tweets via Twitter OAuth authentication.  
 *Usage:* nohup python3 tweet_capture.py &  *# to keep it running at the background*
 
-**bioinfotwee.db:** An SQLite3 database to store captured tweets by tweet_capture.py script.  
+**bioinfotweet.db:** An SQLite3 database to store captured tweets by tweet_capture.py script.  
 *Database schema:*  
 ```sqlite
 sqlite> .schema
@@ -28,3 +28,14 @@ CREATE TABLE "tweetscapture" (
     "Text" TEXT NOT NULL
 )
 ```
+
+**tweet_analyse.py:** Analyse tweet database and generate wordcloud and stats in a JSON file.  
+*Usage:* python3 tweet_analyse.py  
+*Note:* might need to change path where the wordcloud and JSON file be sent.
+
+**twitterfunc.py:** Collection of functions.  
+*Usage:* from twitterfunc import  
+
+**user_search.py:** Search for new twitter users to follow with the selected keyword in their description.  
+*Usage:* python3 user_search.py  
+*Note:* Change keywords (e.g. bioinformatics, computational biology, structural bioinformatics)

@@ -17,8 +17,8 @@ In future, utilizing and manually labelling a set of randomly selected tweets in
 *Usage:* nohup python3 tweet_capture.py &  *# to keep it running at the background*
 
 **bioinfotwee.db:** An SQLite3 database to store captured tweets by tweet_capture.py script.  
-*Database schema:*
-'''sqlite
+*Database schema:*  
+'''
 sqlite> .schema
 CREATE TABLE "tweetscapture" (
     "Date" TEXT NOT NULL,

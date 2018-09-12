@@ -13,12 +13,14 @@ import datetime, time
 logging.basicConfig(filename='usersearch.log',level=logging.INFO)
 
 # OAuth authentication
-consumer_key = ''
-consumer_secret = ''
-access_token = ''
-access_token_secret = ''
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
+with open('../cred/bioinfobotmain.txt', 'r') as f:
+    creds = f.readlines()
+    consumer_key = creds[0].rstrip()
+    consumer_secret = creds[1].rstrip()
+    access_token = creds[2].rstrip()
+    access_token_secret = creds[3].rstrip()
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_token, access_token_secret)
 
 # Creating a tweepy object
 api = tweepy.API(auth)
@@ -30,7 +32,7 @@ logging.info('Extracting following ids')
 following = api.friends_ids('bioinfobot')
 
 # Keyword to search
-keyword ='Computational Biology'
+keyword ='Bioinformatics'
 
 count = 0
 for i in range(1,40):

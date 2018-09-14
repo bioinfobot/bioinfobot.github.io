@@ -3,17 +3,16 @@
 Purpose: Search for new twitter users to follow with the selected keyword in their description.
 External Dependencies: Tweepy
 Author: Rohit Farmer
-Last updated: 9 March 2018
 '''
 
 import tweepy
 import logging
 import datetime, time
 
-logging.basicConfig(filename='usersearch.log',level=logging.INFO)
+logging.basicConfig(filename='../.log/usersearch.log',level=logging.INFO)
 
 # OAuth authentication
-with open('../cred/bioinfobotmain.txt', 'r') as f:
+with open('../../cred/bioinfobotmain.txt', 'r') as f:
     creds = f.readlines()
     consumer_key = creds[0].rstrip()
     consumer_secret = creds[1].rstrip()

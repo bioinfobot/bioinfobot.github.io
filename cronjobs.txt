@@ -1,0 +1,5 @@
+# This is to remind me how I set up cron jobs.
+ 
+# Carry out user search on every other day at 0 hours and 0 minutes.
+0 0 */2 * * cd /home/bioinformaticsbot/bioinfobot/scripts && ./user_search.py
+

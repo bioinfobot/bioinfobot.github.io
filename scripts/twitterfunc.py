@@ -6,7 +6,6 @@ USAGE           : from twitterfunc import tweet_clean
 OUTPUT          : function return
 AUTHOR          : Dr. Rohit Farmer
 EMAIL           : rohit.farmer@gmail.com
-LAST MODIFIED   : 11/04/2018
 '''
 
 import re

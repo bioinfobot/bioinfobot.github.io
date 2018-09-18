@@ -9,32 +9,39 @@ OUTPUT          : Stores captured tweets in a SQLite3 database
                   Generates a log file "tweets_capture.log" 
 AUTHOR          : Dr. Rohit Farmer
 EMAIL           : rohit.farmer@gmail.com
-LAST MODIFIED   : 11/04/2018
 '''
-import tweepy
+
+# Standard library
 import logging
 import datetime, time
 import sqlite3
 
+# External library
+import tweepy
+
 # Logging configuration
-logging.basicConfig(filename='tweets_capture.log',level=logging.INFO)
+logging.basicConfig(filename='../.log/tweets_capture.log',level=logging.INFO)
 
 # Twitter OAuth authentication
 # This is where your key and secrete for twitter login should go.
 # More info at https://www.slickremix.com/docs/how-to-get-api-keys-and-tokens-for-twitter/
-consumer_key = ''
-consumer_secret = ''
-access_token = ''
-access_token_secret = ''
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
+with open('../../cred/bioinfobotmain.txt', 'r') as f: # Reading the credentials from a text file.
+    creds = f.readlines()
+    consumer_key = creds[0].rstrip()
+    consumer_secret = creds[1].rstrip()
+    access_token = creds[2].rstrip()
+    access_token_secret = creds[3].rstrip()
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_token, access_token_secret)
 
 # Creating a tweepy object
 api = tweepy.API(auth)
+#api.update_status('Start Streaming')
 
 # Subclass for stream listener
 class StreamListener(tweepy.StreamListener):
     def on_status(self, status):
+        print(status.text)
         if status.lang == 'en' and 'RT'.upper() not in status.text :
             stat = status.text
             stat = stat.replace('\n','')
@@ -45,14 +52,22 @@ class StreamListener(tweepy.StreamListener):
             name = status.user.screen_name
             data = (create, name, user_id, stat_id, stat)
             #Connecting to SQLite3 database
-            conn = sqlite3.connect('bioinfotweet.db', isolation_level=None)
-            conn.execute('PRAGMA journal_mode=wal')
-            c = conn.cursor()
-            c.execute("INSERT INTO tweetscapture (Date, ScreenName, UserID, TweetID, Text) values (?, ?, ?, ?, ?)", data)
-            conn.commit()
-            cdate="Tweet inserted at: "+str(datetime.datetime.now())
-            logging.info(cdate)
-            conn.close()
+            try:
+                db_file = '../../db/bioinfotweet.db'
+                conn = sqlite3.connect(db_file, isolation_level=None)
+                conn.execute('PRAGMA journal_mode=wal') # This will let concurrent read and write to the database. 
+                c = conn.cursor()
+                c.execute("INSERT INTO tweetscapture (Date, ScreenName, UserID, TweetID, Text) values (?, ?, ?, ?, ?)", data)
+                conn.commit()
+                cdate="Tweet inserted at: "+str(datetime.datetime.now())
+                logging.info(cdate)
+                conn.close()
+            except Exception as ex:
+                exname = str(ex)
+                template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+                message = template.format(type(ex).__name__, ex.args)
+                logging.info("Sqlite3 database exception occurred.")
+                logging.info(message)
 
     def on_error(self, status_code):
         if status_code == 420:
@@ -70,12 +85,11 @@ logging.info(cdate)
 while True:
     try:
         stream.userstream(encoding='utf8')
-		#print("Trying",cool)
     except Exception as ex:
         exname = str(ex)
         template = "An exception of type {0} occurred. Arguments:\n{1!r}"
         message = template.format(type(ex).__name__, ex.args)
-        logging.info("Generic exception occurred")
+        logging.info("Generic exception occurred.")
         logging.info(message)
         if "not defined" in exname:
             break

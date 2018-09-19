@@ -69,7 +69,7 @@ function jsondata(name){
         }
         $(pLang).html(langArr);
 
-		string='\<a class\=\"downloadjson\" href\=\"https\:\/\/bioinfobot\.github\.io\/data\/'+name+"\.json\"\>"+"Download data for "+name+" in Json format. \<\/a\>"
+		string='\<a class\=\"downloadjson\" href\=\"https\:\/\/rohitfarmer\.github\.io\/bioinfobot\/data\/'+name+"\.json\"\>"+"Download data for "+name+" in Json format. \<\/a\>"
 		$(downloadjson).html(string);
 	});
 }

@@ -1,6 +1,5 @@
 # Bioinfobot
-## http://bioinfobot.rohitfarmer.in
-
+## https://rohitfarmer.github.io/bioinfobot/
 ## Introduction
 
 Bioinformatics Bot is an automated tool that captures trends in the bioinformatics industry by analysing tweets posted by bioinformaticians from all over the world. Tweets are captured in real time, tweeted by the users followed by @bioinfobot twitter account. This bot consist of a collection of scripts written in python that apart from capturing Twitter data in real time also periodically search and follow new Twitter users who have bioinformatics, genomics, metagenomics, computational biology, structural bioinformatics, molecular modelling or next generation sequencing in their Twitter bio. Many of the well known bioinformaticians/computational biologist that might be missed by the automated search and follow procedure are also manually selected and followed by the creator and maintainer of this service (Rohit Farmer, PhD). The analysis presented here is the result of the analysis of last month's tweets.

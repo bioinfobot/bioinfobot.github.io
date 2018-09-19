@@ -4,7 +4,8 @@ function onloadfunc(){
     m = d.getUTCMonth();
     m = ("0" + m).slice(-2);
     var y = d.getUTCFullYear();
-    name = y + '-' + m;
+    //name = y + '-' + m;
+    name = '2018-02'
     imagePath = "images\/" + name + ".png";
     var imageInsert = '<img align="center" id="wordcloud"' + 'src=' + '"' + imagePath + '"' + 'OnError="this.src=\'images\/default.png\'\;"' + '>';
 	$(wordcloud).html(imageInsert);
@@ -12,7 +13,7 @@ function onloadfunc(){
 }
 
 function wrongyear(){
-	alert("I can only show data from the past, neither present nor future. \nPlease try again with a previous month.");
+	alert("Please enter a date between May 2017 and February 2018.");
 	location.reload();
 }
 

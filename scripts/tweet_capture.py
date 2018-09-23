@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
 
 '''
 DESCRIPTION     : Captures streaming tweets via Twitter OAuth authentication.
@@ -41,7 +41,7 @@ api = tweepy.API(auth)
 # Subclass for stream listener
 class StreamListener(tweepy.StreamListener):
     def on_status(self, status):
-        print(status.text)
+        print status.text
         if status.lang == 'en' and 'RT'.upper() not in status.text :
             stat = status.text
             stat = stat.replace('\n','')

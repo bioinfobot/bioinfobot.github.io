@@ -38,6 +38,10 @@ with open('../../cred/bioinfobotmain.txt', 'r') as f: # Reading the credentials 
 api = tweepy.API(auth)
 #api.update_status('Start Streaming')
 
+# # Get a list of the users that i am following.
+# following = api.friends_ids('bioinfobot')
+
+
 # Subclass for stream listener
 class StreamListener(tweepy.StreamListener):
     def on_status(self, status):
@@ -84,7 +88,8 @@ logging.info(cdate)
 
 while True:
     try:
-        stream.userstream(encoding='utf8')
+        #stream.userstream(encoding='utf8')
+        stream.filter(follow=following)
     except Exception as ex:
         exname = str(ex)
         template = "An exception of type {0} occurred. Arguments:\n{1!r}"

@@ -40,7 +40,7 @@ logging.info(timestamp)
 # Fetch the list of the users that I am already following.
 following_ids = api.friends_ids('bioinfobot')
 
-# print(len(following_ids))
+print("Total number of friends:", len(following_ids))
 
 # Read/create skip users list.
 if os.path.isfile('following.pickle'):
@@ -52,17 +52,37 @@ if os.path.isfile('following.pickle'):
         logging.info("Exception occured in reading pickle!!")
 else:
     try:
-        following={'bioinfobot': 861591570671423488}
+        following={}
+        following = following.fromkeys(following_ids)
         with open('following.pickle', 'wb') as fol:
-            # Pickle the 'skip_user' list using the highest protocol available.
+            # Pickle the 'following' dicitonary using the highest protocol available.
             pickle.dump(following, fol, pickle.HIGHEST_PROTOCOL)
     except:
         logging.info("Exception occured while creating pickle!!")
 
-limit = 900
+limit = 830
 
+keys = list(following.keys())
 
+count = 0
+for key in keys:
+    if following[key] == None:
+        count += 1
+        user_info = api.get_user(key)
+        name = user_info.screen_name
+        following[key] = name
+        if count == limit:
+            break
 
+# Print the total number of users with no screen names yet.
+count_none = 0
+for key in keys:
+    if following[key] == None:
+        count_none += 1
+print("Total number of friend with no screen name yet:", count_none)
+
+# Print the remaining number of api calls.
+print("Number of api calls remainig:",api.rate_limit_status()['resources']['users']['/users/show/:id'])
 
 # Write the updated following dictionary.
 try:

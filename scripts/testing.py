@@ -35,17 +35,23 @@ api = tweepy.API(auth)
 timestamp = datetime.datetime.now()
 logging.info(timestamp)
 
+# To get the rate limit status on various api calls.
+print(api.rate_limit_status()['resources']['users']['/users/show/:id'])
+
 # Check the users that I am already following.
-following = api.friends_ids('bioinfobot')
+# following = api.friends_ids('bioinfobot')
 # print ("Type: {}".format(type(following)))
 # print (following)
 
-following_screen_names = []
-for id in following:
-    user_info = api.get_user(id)
-    name = user_info.screen_name
-    print("Type: {}".format(type(name)))
-    print("Name: {}".format(name))
-    following_screen_names.append(name)
-print ("Total no of users: {}".format(len(following_screen_names)))
+# following_screen_names = []
+# count = 0
+# for id in following:
+#     count +=1
+#     print (count,"\n")
+#     user_info = api.get_user(id)
+#     name = user_info.screen_name
+#     #print("Type: {}".format(type(name)))
+#     print("Name: {}".format(name))
+#     following_screen_names.append(name)
+# print ("Total no of users: {}".format(len(following_screen_names)))
 

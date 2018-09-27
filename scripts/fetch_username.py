@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 
-#!/usr/bin/env python3
-
 '''
-Purpose: Testing script.
+Purpose: Fetch screen name from a twiter id.
 External Dependencies: Tweepy
 Author: Rohit Farmer
 '''

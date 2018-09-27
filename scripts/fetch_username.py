@@ -40,7 +40,8 @@ logging.info(timestamp)
 # Fetch the list of the users that I am already following.
 following_ids = api.friends_ids('bioinfobot')
 
-print("Total number of friends:", len(following_ids))
+total_friends = "Total number of friends:" + str(len(following_ids))
+logging.info(total_friends)
 
 # Read/create skip users list.
 if os.path.isfile('following.pickle'):
@@ -60,10 +61,11 @@ else:
     except:
         logging.info("Exception occured while creating pickle!!")
 
-limit = 830
+limit = 900
 
 keys = list(following.keys())
 
+# Read the userids in the dictionary that are still none and fetch screen name for them.
 count = 0
 for key in keys:
     if following[key] == None:
@@ -79,10 +81,12 @@ count_none = 0
 for key in keys:
     if following[key] == None:
         count_none += 1
-print("Total number of friend with no screen name yet:", count_none)
+no_screen_name = "Total number of friend with no screen name yet:" + str(count_none)
+logging.info(no_screen_name)
 
 # Print the remaining number of api calls.
-print("Number of api calls remainig:",api.rate_limit_status()['resources']['users']['/users/show/:id'])
+remaining_api_calls = "Number of api calls remainig:" + str(api.rate_limit_status()['resources']['users']['/users/show/:id'])
+logging.info(remaining_api_calls)
 
 # Write the updated following dictionary.
 try:

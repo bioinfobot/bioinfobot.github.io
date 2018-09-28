@@ -11,12 +11,11 @@ import logging
 import datetime, time
 import os
 import pickle
+from ftplib import FTP
 
 # External library
 import tweepy
 
-# Create a log file.
-logging.basicConfig(filename='../.log/testing.log',level=logging.INFO)
 
 # OAuth authentication
 with open('../../cred/bioinfobotmain.txt', 'r') as f: # Reading the credentials from a text file.
@@ -30,10 +29,6 @@ with open('../../cred/bioinfobotmain.txt', 'r') as f: # Reading the credentials 
 
 # Creating a tweepy object
 api = tweepy.API(auth)
-
-# Print a timestamp in the log file.
-timestamp = datetime.datetime.now()
-logging.info(timestamp)
 
 # To get the rate limit status on various api calls.
 print(api.rate_limit_status()['resources']['users']['/users/show/:id'])
@@ -55,3 +50,16 @@ print(api.rate_limit_status()['resources']['users']['/users/show/:id'])
 #     following_screen_names.append(name)
 # print ("Total no of users: {}".format(len(following_screen_names)))
 
+# Check pubmed ftp
+ftp = FTP('ftp.ncbi.nlm.nih.gov')
+ftp.login()
+ftp.cwd('pub/pmc/manuscript/')
+files = ftp.nlst()
+files.sort()
+files_to_download = []
+for file in files:
+    if '.txt.tar.gz' in file:
+        files_to_download.append(file)
+print(files_to_download)
+
+ftp.retrbinary("RETR " + files_to_download[0] ,open("/home/rohit/Downloads/" + files_to_download[0], 'wb').write)

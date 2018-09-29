@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 '''
 DESCRIPTION     : Captures streaming tweets via Twitter OAuth authentication.
@@ -15,6 +15,8 @@ EMAIL           : rohit.farmer@gmail.com
 import logging
 import datetime, time
 import sqlite3
+import pickle
+import os
 
 # External library
 import tweepy
@@ -41,11 +43,25 @@ api = tweepy.API(auth)
 # # Get a list of the users that i am following.
 # following = api.friends_ids('bioinfobot')
 
+# Read following users list.
+if os.path.isfile('following.pickle'):
+    try:
+        with open('following.pickle', 'rb') as fol:
+            # The protocol version used is detected automatically, so we do not have to specify it.
+            following = []
+            following_dict = pickle.load(fol)
+            for key, value in following_dict.items():
+                following.append(value)
+    except Exception as ex:
+        logging.info("Exception occured in reading pickle!!")
+        print(ex)
+print(following[0:10])
+following = following[0:10]
 
 # Subclass for stream listener
 class StreamListener(tweepy.StreamListener):
     def on_status(self, status):
-        print status.text
+        print(status.text)
         if status.lang == 'en' and 'RT'.upper() not in status.text :
             stat = status.text
             stat = stat.replace('\n','')

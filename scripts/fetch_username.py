@@ -41,7 +41,7 @@ following_ids = api.friends_ids('bioinfobot')
 total_friends = "Total number of friends:" + str(len(following_ids))
 logging.info(total_friends)
 
-# Read/create skip users list.
+# Read/create following users list.
 if os.path.isfile('following.pickle'):
     try:
         with open('following.pickle', 'rb') as fol:

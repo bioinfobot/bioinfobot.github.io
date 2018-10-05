@@ -31,7 +31,7 @@ with open('../../cred/bioinfobotmain.txt', 'r') as f: # Reading the credentials 
 api = tweepy.API(auth)
 
 # To get the rate limit status on various api calls.
-print(api.rate_limit_status()['resources']['users']['/users/show/:id'])
+# print(api.rate_limit_status()['resources']['users']['/users/show/:id'])
 
 # Check the users that I am already following.
 # following = api.friends_ids('bioinfobot')
@@ -50,16 +50,18 @@ print(api.rate_limit_status()['resources']['users']['/users/show/:id'])
 #     following_screen_names.append(name)
 # print ("Total no of users: {}".format(len(following_screen_names)))
 
-# Check pubmed ftp
-ftp = FTP('ftp.ncbi.nlm.nih.gov')
-ftp.login()
-ftp.cwd('pub/pmc/manuscript/')
-files = ftp.nlst()
-files.sort()
-files_to_download = []
-for file in files:
-    if '.txt.tar.gz' in file:
-        files_to_download.append(file)
-print(files_to_download)
+class MyStreamListener(tweepy.StreamListener):
 
-ftp.retrbinary("RETR " + files_to_download[0] ,open("/home/rohit/Downloads/" + files_to_download[0], 'wb').write)
+    def on_status(self, status):       
+        tweet = status.text
+        print(tweet)
+        # do stuff with tweet
+        
+        
+myStreamListener = MyStreamListener()
+myStream = tweepy.Stream(auth = api.auth, listener=myStreamListener)
+print("Starting Stream Filter")
+
+while True:
+    myStream.filter(follow=['bioinfobot', 'pathogenomenick', 'BioMickWatson'])
+    #myStream.filter(track=['python'])

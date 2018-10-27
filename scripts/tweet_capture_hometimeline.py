@@ -43,9 +43,9 @@ c.execute("SELECT * FROM tweetscapture ORDER BY Date DESC LIMIT 1")
 tweet_id = c.fetchone()[3]
 
 # Fetch recent tweets 
-for status in api.home_timeline(since_id=tweet_id):
-    if status.lang == 'en' and 'RT'.upper() not in status.text :
-        stat = status.text
+for status in api.home_timeline(since_id=tweet_id, tweet_mode='extended'):
+    if status.lang == 'en' and 'RT'.upper() not in status.full_text :
+        stat = status.full_text
         stat = stat.replace('\n','')
         stat = stat.replace('\t','')
         user_id = status.user.id_str

@@ -4,8 +4,8 @@ function onloadfunc(){
     m = d.getUTCMonth();
     m = ("0" + m).slice(-2);
     var y = d.getUTCFullYear();
-    //name = y + '-' + m;
-    name = '2018-02'
+    name = y + '-' + m;
+    //name = '2018-02'
     imagePath = "images\/" + name + ".png";
     var imageInsert = '<img align="center" id="wordcloud"' + 'src=' + '"' + imagePath + '"' + 'OnError="this.src=\'images\/default.png\'\;"' + '>';
 	$(wordcloud).html(imageInsert);
@@ -13,7 +13,7 @@ function onloadfunc(){
 }
 
 function wrongyear(){
-	alert("Please enter a date between May 2017 and February 2018.");
+	alert("Please enter a date between May 2017 and February 2018 or October 2018 onwards.");
 	location.reload();
 }
 
@@ -31,7 +31,7 @@ function main(yearMonth) {
 function jsondata(name){
 	//alert(name)
     var jsonPath;
-    jsonPath = "https\:\/\/bioinfobot\.github\.io\/data\/" + name + ".json";
+    jsonPath = "https\:\/\/rohitfarmer\.github\.io\/bioinfobot\/data\/" + name + ".json";
 	$.getJSON(jsonPath, function(json) {
         var string, usersFreq, topWords, hashFreq, langFreq, hashArr, userArr, wordsArr, langArr;
         $(oneliner).html("Analytical results for <b>" + name + "</b> based on <b>" + json.TweetCount + "</b> tweets consisting of <b>" + json.TotalWords + "</b> total words with <b>" + json.UniqueWords + "</b> unique words.");

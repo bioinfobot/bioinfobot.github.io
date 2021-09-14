@@ -59,9 +59,9 @@ for row in c.execute('SELECT * FROM tweetscapture ORDER BY Date DESC'):
         tweetID = row[3]
         tweetText = tweet_clean(row[4].lower())
         stopWords = list(stopwords.words("english"))
-        myStopWords = ['also', 'bad', 'cant', 'could', 'dont', 'day', 'great', 'get', 'good', 'hear', 
-                       'here', 'ive', 'im', 'like', 'latest', 'new', 'news', 'oh', 'people', 'see', 
-                       'today', 'top', 'the', 'twitter', 'thats', 'thanks', 'us', 'using', 'work', 
+        myStopWords = ['also', 'bad', 'cant', 'could', 'dont', 'day', 'great', 'get', 'good', 'hear',
+                       'here', 'ive', 'im', 'like', 'latest', 'new', 'news', 'oh', 'people', 'see',
+                       'today', 'top', 'the', 'twitter', 'thats', 'thanks', 'us', 'using', 'work',
                        'would','x']
         stopWords = stopWords + myStopWords
         words = word_tokenize(tweetText)
@@ -114,9 +114,9 @@ wordcloud = WordCloud(font_path='Actor-Regular.ttf', width=1500, height=500,
                       max_words=500, stopwords=None, background_color='whitesmoke',
                       max_font_size=None, font_step=1, mode='RGB',
                       collocations=True, colormap=None, normalize_plurals=True).generate_from_frequencies(freq)
-imagePath = "/home/bioinformaticsbot/bioinfobot/images/" + name + '.png'  # Put the actual path of the word cloud image produced in the previous step
+imagePath = "/home/bioinformaticsbot/bioinfobot.github.io/images/" + name + '.png'  # Put the actual path of the word cloud image produced in the previous step
 wordcloud.to_file(imagePath)
-imageUrl = "https://rohitfarmer.github.io/bioinfobot/images/" + name + '.png'
+imageUrl = "https://bioinfobot.github.io/images/" + name + '.png'
 
 
 def dict_value_sort_return_top(frquency_dict, maxreturn):
@@ -157,7 +157,7 @@ mainJsonDump = {"ImageURL": imageUrl, "TopWords": topWords, "TweetCount": rowCou
                 "UniqueWords": uniqueWords, 'HashFreq': hashFreqSorted, 'UsersFreq': usersFreqSorted,
                 'PopularLanguages': lang_nonzero}
 # ImageURL contains the path to the wordcloud image produced in the previous block in string format
-# TopWords contains the top words arranged in descending order in 
+# TopWords contains the top words arranged in descending order in
 # an array. Each array element is a tuple/array with two entries, word (index 0) and frequency (index 1)
 # TweetCount contains the total no of tweets read from the database
 # TotalWords contains the total no of filtered words used in the analysis
@@ -166,11 +166,11 @@ mainJsonDump = {"ImageURL": imageUrl, "TopWords": topWords, "TweetCount": rowCou
 # UsersFreq contains top n users
 
 # Write a json file
-jsonPath = '/home/bioinformaticsbot/bioinfobot/data/' + name + '.json'
+jsonPath = '/home/bioinformaticsbot/bioinfobot.github.io/data/' + name + '.json'
 with open(jsonPath, 'w') as wcd:
     json.dump(mainJsonDump, wcd)
 
-# Load the above created json file and read the elements from dictionary and arrays 
+# Load the above created json file and read the elements from dictionary and arrays
 # This code is a template to reproduce it in JavaScript for the website
 # It shows how the elements are stored in the json file
 # with open(jsonPath, 'r') as rwcd:

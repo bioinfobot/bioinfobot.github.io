@@ -3,6 +3,7 @@ layout: post
 title: "Monthly analysis for 2017-05"
 date: 2017-05-01
 categories: Analysis
+comments: true
 ---
 
 # Summary

@@ -2,12 +2,12 @@
 layout: post
 title: "Monthly analysis for 2017-05"
 date: 2017-05-01
-categories: ["Monthly Analysis"]
+categories: "Monthly Analysis"
 ---
 
 # Summary
 ![Summary Image](/_images/wordcloud/2017-05.png "Summary Image")
-Analyical results for 2021-12 based on 19914 tweets consisting of 143875 total words with 24989 unique words
+Analyical results for 2017-05 based on 19914 tweets consisting of 143875 total words with 24989 unique words
 
 
 # Top 20 words

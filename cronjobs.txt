@@ -1,7 +1,0 @@
-# This is to remind me how I set up cron jobs.
- 
-1 0 1 * * cd /home/bioinformaticsbot/bioinfobot/scripts && ./tweet_analyse.py
-*/15 * * * * cd /home/bioinformaticsbot/bioinfobot/scripts && ./tweet_capture_hometimeline.py
-0 0 */2 * * cd /home/bioinformaticsbot/bioinfobot/scripts && ./user_search.py
-0 1 */2 * * cd /home/bioinformaticsbot/bioinfobot/scripts && ./fetch_username.py
-
